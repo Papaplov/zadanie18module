@@ -1,0 +1,38 @@
+﻿<Window x:Class="zadanie18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Библиотека" Height="500" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель поиска -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <Label Content="Поиск:" VerticalAlignment="Center"/>
+            <TextBox x:Name="SearchTextBox" Width="200" Margin="5,0" VerticalAlignment="Center" TextChanged="SearchTextBox_TextChanged"/>
+        </StackPanel>
+
+        <!-- Панель сортировки и фильтрации -->
+        <WrapPanel Grid.Row="1" Margin="0,0,0,10">
+            <Label Content="Сортировать по:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="SortComboBox" Width="120" Margin="5,0" SelectionChanged="SortComboBox_SelectionChanged">
+                <ComboBoxItem Content="Название" Tag="Title" IsSelected="True"/>
+                <ComboBoxItem Content="Автор" Tag="Author"/>
+                <ComboBoxItem Content="Год издания" Tag="YearOfPublication"/>
+                <ComboBoxItem Content="Цена" Tag="Price"/>
+                <ComboBoxItem Content="Издательство" Tag="Publisher"/>
+            </ComboBox>
+
+            <Label Content="Жанр:" VerticalAlignment="Center" Margin="15,0,0,0"/>
+            <ComboBox x:Name="GenreComboBox" Width="150" Margin="5,0" SelectionChanged="GenreComboBox_SelectionChanged"/>
+        </WrapPanel>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="BooksDataGrid" Grid.Row="2" AutoGenerateColumns="True" 
+                  IsReadOnly="True" AlternatingRowBackground="LightGray" 
+                  CanUserAddRows="False" CanUserDeleteRows="False"/>
+    </Grid>
+</Window>
